@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity := -200.0
 
 @onready var animated_sprite := $AnimatedSprite2D
-var controllable := true
+var controllable := false
 
 func _physics_process(delta: float) -> void:
 	if not controllable:
@@ -41,7 +41,6 @@ func update_animation() -> void:
 		animated_sprite.flip_h = velocity.x > 0
 
 func ExitDoor() -> void:
-	controllable = false
 	animated_sprite.play("exit_door")
 	await animated_sprite.animation_finished
 	controllable = true
