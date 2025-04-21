@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var walk_speed := 30.0
-@export var run_speed := 60.0
+@export var run_speed := 80.0
 @export var jump_velocity := -200.0
 
 @onready var animated_sprite := $AnimatedSprite2D
