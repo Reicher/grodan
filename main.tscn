@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://du6bdr401jg3f" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bjex26idt6aya" path="res://Door.tscn" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://bpo33028qn65l" path="res://sprites/ladder.png" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://lcfiv4yum3gn" path="res://ladder.tscn" id="3_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(107.887, 3)
@@ -44,6 +44,5 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(76, 46)
 animation = &"red_idle"
 
-[node name="Ladder" type="Sprite2D" parent="."]
+[node name="Ladder" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(111, 45)
-texture = ExtResource("4_lquwl")
