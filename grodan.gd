@@ -3,18 +3,37 @@ extends CharacterBody2D
 @export var walk_speed := 30.0
 @export var run_speed := 80.0
 @export var jump_velocity := -200.0
+@export var floor_collision_layer: int = 2
 
 var is_near_ladder := false
-var is_climbing := false
+var is_climbing := false :
+	set(value):
+		if is_climbing != value:
+			is_climbing = value
+			update_collision_mask()
+
+var original_collision_mask: int
+var floor_layer_mask: int
 
 @onready var animated_sprite := $AnimatedSprite2D
 var controllable := false
+
+func _ready():
+	original_collision_mask = collision_mask
+	floor_layer_mask = 1 << (floor_collision_layer - 1)  # Convert layer to bitmask
+
+func update_collision_mask():
+	if is_climbing:
+		# Exclude floor layer while climbing
+		collision_mask = original_collision_mask & ~floor_layer_mask
+	else:
+		# Restore original mask
+		collision_mask = original_collision_mask
 
 func _physics_process(delta: float) -> void:
 	if not controllable:
 		return
 
-	# Climbing
 	if is_climbing:
 		handle_ladder_input()
 	else:

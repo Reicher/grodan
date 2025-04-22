@@ -208,6 +208,7 @@ animations = [{
 size = Vector2(21.75, 17.7812)
 
 [node name="Grodan" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_34rqa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
