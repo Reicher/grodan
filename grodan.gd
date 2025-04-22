@@ -3,88 +3,81 @@ extends CharacterBody2D
 @export var walk_speed := 30.0
 @export var run_speed := 80.0
 @export var jump_velocity := -200.0
-@export var floor_collision_layer: int = 2
 
-var is_near_ladder := false
-var is_climbing := false :
-	set(value):
-		if is_climbing != value:
-			is_climbing = value
-			update_collision_mask()
-
-var original_collision_mask: int
-var floor_layer_mask: int
+var is_near_ladder := false  # Set from external code
+var is_climbing := false
 
 @onready var animated_sprite := $AnimatedSprite2D
 var controllable := false
-
-func _ready():
-	original_collision_mask = collision_mask
-	floor_layer_mask = 1 << (floor_collision_layer - 1)  # Convert layer to bitmask
-
-func update_collision_mask():
-	if is_climbing:
-		# Exclude floor layer while climbing
-		collision_mask = original_collision_mask & ~floor_layer_mask
-	else:
-		# Restore original mask
-		collision_mask = original_collision_mask
 
 func _physics_process(delta: float) -> void:
 	if not controllable:
 		return
 
 	if is_climbing:
-		handle_ladder_input()
+		handle_ladder_movement()
 	else:
-		if not is_on_floor():
-			velocity.y += get_gravity().y * delta
-		handle_input()
+		handle_ground_movement(delta)
 
 	move_and_slide()
 	update_animation()
+
+func handle_ladder_movement() -> void:
+	# Apply ladder run speed
+	var speed = run_speed if Input.is_action_pressed("run") else walk_speed
+	velocity = Vector2(0, Input.get_axis("up", "down")) * speed
 	
-func handle_ladder_input() -> void:
-	var up_down = Input.get_axis("up", "down")
-	velocity.y = up_down * walk_speed
-	velocity.x = 0
+	# Prevent infinite climbing when not near ladder
+	if not is_near_ladder:
+		end_climbing()
+		return
 
-	# Stop climbing if jumping or walking away
-	if not is_near_ladder or is_on_floor():
-		is_climbing = false
+	if is_on_floor() or Input.get_axis("left", "right") != 0:
+		end_climbing()
 
-func handle_input() -> void:
-	# Jump
+func handle_ground_movement(delta: float) -> void:
+	# Gravity
+	if not is_on_floor():
+		velocity.y += get_gravity().y * delta
+
+	# Jumping
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = jump_velocity
 
-	# Normal walking
-	var input_dir = Input.get_axis("left", "right")
-	var run_modifier = Input.get_action_strength("run")
-	velocity.x = input_dir * (run_speed if run_modifier else walk_speed)
+	# Horizontal movement
+	velocity.x = Input.get_axis("left", "right") * (run_speed if Input.is_action_pressed("run") else walk_speed)
 
-	# Start climbing if pressing up/down and near a ladder
-	if is_near_ladder:
-		if Input.is_action_pressed("up") or (Input.is_action_pressed("down") and not is_on_floor()):
-			is_climbing = true
-			velocity.x = 0
+	# Start climbing only when near ladder
+	if is_near_ladder and (Input.is_action_pressed("up") or Input.is_action_pressed("down")):
+		start_climbing()
+
+func start_climbing():
+	is_climbing = true
+	velocity = Vector2.ZERO
+	set_collision_mask_value(2, false)
+
+func end_climbing():
+	is_climbing = false
+	set_collision_mask_value(2, true)
 
 func update_animation() -> void:
 	if is_climbing:
-		if velocity.y == 0:
+		if abs(velocity.y) > 0:
 			animated_sprite.play("climb")
-			animated_sprite.frame = 0  # freeze on first frame
 		else:
+			# Show single frame when stopped
 			animated_sprite.play("climb")
+			animated_sprite.frame = 0
+			animated_sprite.stop()
 	elif not is_on_floor():
 		animated_sprite.play("jump")
-	elif velocity.x == 0:
-		animated_sprite.play("idle")
-	elif abs(velocity.x) <= walk_speed:
-		animated_sprite.play("walk")
 	else:
-		animated_sprite.play("run")
-
+		animated_sprite.play(
+			"idle" if velocity.x == 0 else
+			"run" if abs(velocity.x) > walk_speed else
+			"walk"
+		)
+	
 	if velocity.x != 0:
 		animated_sprite.flip_h = velocity.x > 0
 

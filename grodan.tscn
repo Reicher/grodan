@@ -205,7 +205,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34rqa"]
-size = Vector2(21.75, 17.7812)
+size = Vector2(13, 17.7812)
 
 [node name="Grodan" type="CharacterBody2D"]
 collision_mask = 3
@@ -215,11 +215,11 @@ script = ExtResource("1_34rqa")
 position = Vector2(0, 0.25)
 scale = Vector2(1, 1.02174)
 sprite_frames = SubResource("SpriteFrames_0xm2m")
-animation = &"climb"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.875, 2.89062)
+position = Vector2(0.5, 2.89062)
 shape = SubResource("RectangleShape2D_34rqa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
