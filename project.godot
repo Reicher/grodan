@@ -29,6 +29,10 @@ folder_colors={
 "res://screens/": "red"
 }
 
+[global_group]
+
+climb_area=""
+
 [importer_defaults]
 
 texture={

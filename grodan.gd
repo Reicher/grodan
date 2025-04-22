@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var run_speed := 80.0
 @export var jump_velocity := -200.0
 
-var is_near_ladder := false  # Set from external code
+var can_climb := false
 var is_climbing := false
 
 @onready var animated_sprite := $AnimatedSprite2D
@@ -28,7 +28,7 @@ func handle_ladder_movement() -> void:
 	velocity = Vector2(0, Input.get_axis("up", "down")) * speed
 	
 	# Prevent infinite climbing when not near ladder
-	if not is_near_ladder:
+	if not can_climb:
 		end_climbing()
 		return
 
@@ -48,7 +48,7 @@ func handle_ground_movement(delta: float) -> void:
 	velocity.x = Input.get_axis("left", "right") * (run_speed if Input.is_action_pressed("run") else walk_speed)
 
 	# Start climbing only when near ladder
-	if is_near_ladder and (Input.is_action_pressed("up") or Input.is_action_pressed("down")):
+	if can_climb and (Input.is_action_pressed("up") or Input.is_action_pressed("down")):
 		start_climbing()
 
 func start_climbing():
@@ -85,3 +85,12 @@ func ExitDoor() -> void:
 	animated_sprite.play("exit_door")
 	await animated_sprite.animation_finished
 	controllable = true
+
+
+func _on_climb_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.is_in_group("climb_area"):
+		can_climb = true
+
+func _on_climb_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.is_in_group("climb_area"):
+		can_climb = false
