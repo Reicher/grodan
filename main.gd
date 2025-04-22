@@ -13,3 +13,10 @@ func _ready() -> void:
 	add_child(grodan)
 	
 	$Door.Exit(grodan)
+
+
+func _on_lower_portal_body_entered(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		body.controllable = false
+		# Fix so that grodan can get a speed even when not controllable
+		

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpo33028qn65l" path="res://sprites/ladder.png" id="1_lqhsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(12, 43.5206)
+size = Vector2(12, 42.2018)
 
 [node name="Ladder" type="Sprite2D"]
 texture = ExtResource("1_lqhsa")
@@ -11,7 +11,7 @@ texture = ExtResource("1_lqhsa")
 [node name="ClimbArea" type="Area2D" parent="." groups=["climb_area"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
-position = Vector2(0, -1.5)
+position = Vector2(0, -1)
 scale = Vector2(0.343236, 0.758262)
 shape = SubResource("RectangleShape2D_h2yge")
 

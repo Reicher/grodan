@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		handle_ladder_movement()
 	else:
 		handle_ground_movement(delta)
-
+	
 	move_and_slide()
 	update_animation()
 
@@ -85,7 +85,6 @@ func ExitDoor() -> void:
 	animated_sprite.play("exit_door")
 	await animated_sprite.animation_finished
 	controllable = true
-
 
 func _on_climb_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.is_in_group("climb_area"):
