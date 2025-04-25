@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 var can_climb := false
 var is_climbing := false
+var is_portaling: bool = false
 
 @onready var animated_sprite := $AnimatedSprite2D
 var controllable := false

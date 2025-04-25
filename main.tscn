@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cslq67hrqvc60" path="res://floor.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bjex26idt6aya" path="res://Door.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://lcfiv4yum3gn" path="res://ladder.tscn" id="3_h2yge"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(2.27273, 24)
+[ext_resource type="PackedScene" uid="uid://j0og58yyu68e" path="res://portal.tscn" id="3_lquwl"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -19,26 +17,14 @@ scale = Vector2(1.76, 1)
 position = Vector2(4, 28)
 scale = Vector2(1.76, 1)
 
-[node name="Upper Portal" type="Area2D" parent="."]
-position = Vector2(4, 28)
-scale = Vector2(1.76, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Portal"]
-position = Vector2(-1.13636, -12)
-shape = SubResource("RectangleShape2D_1bvp3")
+[node name="Portal" parent="Upper Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="Lower Plattform" parent="." instance=ExtResource("2_1bvp3")]
 position = Vector2(4, 60)
 scale = Vector2(1.76, 1)
 collision_layer = 1
 
-[node name="Lower Portal" type="Area2D" parent="."]
-position = Vector2(4, 60)
-scale = Vector2(1.76, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lower Portal"]
-position = Vector2(-0.568182, -12)
-shape = SubResource("RectangleShape2D_1bvp3")
+[node name="Portal" parent="Lower Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="Door" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(76, 46)
@@ -46,5 +32,3 @@ animation = &"red_idle"
 
 [node name="Ladder" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(111, 45)
-
-[connection signal="body_entered" from="Lower Portal" to="." method="_on_lower_portal_body_entered"]
