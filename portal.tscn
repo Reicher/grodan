@@ -9,16 +9,16 @@ size = Vector2(2.27273, 24)
 script = ExtResource("1_0r486")
 
 [node name="Left" type="Marker2D" parent="."]
-position = Vector2(-4, -12)
+position = Vector2(-5, -12)
 
 [node name="Entry" type="Area2D" parent="."]
-position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
 position = Vector2(-1.13636, -12)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Point" type="Marker2D" parent="Entry"]
-position = Vector2(6, -12)
+position = Vector2(5, -12)
 
 [connection signal="body_entered" from="Entry" to="." method="_on_entry_body_entered"]
+[connection signal="body_exited" from="Entry" to="." method="_on_entry_body_exited"]

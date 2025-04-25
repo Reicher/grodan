@@ -14,13 +14,13 @@ position = Vector2(4, -4)
 scale = Vector2(1.76, 1)
 
 [node name="Upper Plattform" parent="." instance=ExtResource("2_1bvp3")]
-position = Vector2(4, 28)
+position = Vector2(0, 28)
 scale = Vector2(1.76, 1)
 
 [node name="Portal" parent="Upper Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="Lower Plattform" parent="." instance=ExtResource("2_1bvp3")]
-position = Vector2(4, 60)
+position = Vector2(0, 60)
 scale = Vector2(1.76, 1)
 collision_layer = 1
 

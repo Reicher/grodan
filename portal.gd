@@ -52,6 +52,6 @@ func _on_entry_body_entered(body: Node2D) -> void:
 	if body.has_method("set_control_enabled"):
 		body.set_control_enabled(true)
 
-	# Delay clearing the portal flag to avoid instant re-triggering
-	await get_tree().create_timer(0.2).timeout
-	body.is_portaling = false
+func _on_entry_body_exited(body: Node2D) -> void:
+	if body is CharacterBody2D:
+		body.is_portaling = false
