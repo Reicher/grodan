@@ -10,25 +10,60 @@
 script = ExtResource("1_h2yge")
 
 [node name="Cieling" parent="." instance=ExtResource("2_1bvp3")]
-position = Vector2(4, -4)
-scale = Vector2(1.76, 1)
+position = Vector2(0, -1)
 
 [node name="Upper Plattform" parent="." instance=ExtResource("2_1bvp3")]
-position = Vector2(0, 28)
-scale = Vector2(1.76, 1)
+position = Vector2(0, 30)
 
 [node name="Portal" parent="Upper Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="Lower Plattform" parent="." instance=ExtResource("2_1bvp3")]
-position = Vector2(0, 60)
-scale = Vector2(1.76, 1)
+position = Vector2(0, 61)
 collision_layer = 1
 
 [node name="Portal" parent="Lower Plattform" instance=ExtResource("3_lquwl")]
 
-[node name="Door" parent="." instance=ExtResource("2_h2yge")]
-position = Vector2(76, 46)
-animation = &"red_idle"
+[node name="Start Door" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(428, 47)
 
 [node name="Ladder" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(111, 45)
+position = Vector2(218, 45)
+
+[node name="White Door" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(455, 46)
+animation = &"white_idle"
+
+[node name="Red Door" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(431, 15)
+
+[node name="Red Door3" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(409, 15)
+
+[node name="Red Door4" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(387, 15)
+
+[node name="White Door2" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(317, 15)
+animation = &"white_idle"
+
+[node name="White Door3" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(293, 15)
+animation = &"white_idle"
+
+[node name="Gold Door" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(317, 46)
+animation = &"gold_idle"
+
+[node name="White Door4" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(293, 46)
+animation = &"gold_idle"
+
+[node name="Ladder2" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(160, 45)
+
+[node name="White Door5" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(231, 46)
+animation = &"white_idle"
+
+[node name="Door" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(172, 15)

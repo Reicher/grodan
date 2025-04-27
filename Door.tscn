@@ -103,6 +103,5 @@ animations = [{
 
 [node name="Door" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_lquwl")
-animation = &"red_open"
-autoplay = "red_idle"
+animation = &"red_idle"
 script = ExtResource("2_iu8q0")

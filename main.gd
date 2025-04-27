@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var upper_portal = $"Upper Plattform/Portal"
 @onready var lower_portal = $"Lower Plattform/Portal"
+@onready var start_door = $"Start Door"
 
 func _ready() -> void:
 	upper_portal.set_portal_pair(lower_portal)
@@ -17,4 +18,4 @@ func _ready() -> void:
 	var grodan = grodan_scene.instantiate()
 	add_child(grodan)
 	
-	$Door.Exit(grodan)
+	start_door.Exit(grodan)
