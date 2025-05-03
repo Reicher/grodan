@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://lcfiv4yum3gn"]
+[gd_scene load_steps=4 format=3 uid="uid://lcfiv4yum3gn"]
 
 [ext_resource type="Texture2D" uid="uid://bpo33028qn65l" path="res://sprites/ladder.png" id="1_lqhsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(12, 42.2018)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cq4ai"]
+vertices = PackedVector2Array(1, 14, -1, 14, -1, -34, 1, -34)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2, -35, 2, -35, 2, 15, -2, 15)])
+agent_radius = 1.0
 
 [node name="Ladder" type="Sprite2D"]
 texture = ExtResource("1_lqhsa")
@@ -14,6 +20,17 @@ texture = ExtResource("1_lqhsa")
 position = Vector2(0, -1)
 scale = Vector2(0.343236, 0.758262)
 shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_cq4ai")
+
+[node name="UpperNavLink" type="NavigationLink2D" parent="."]
+position = Vector2(0, -31)
+end_position = Vector2(0.1, 0.1)
+
+[node name="LowerNavLink" type="NavigationLink2D" parent="."]
+position = Vector2(0, 4)
+end_position = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="ClimbArea" to="." method="_on_climb_area_body_entered"]
 [connection signal="body_exited" from="ClimbArea" to="." method="_on_climb_area_body_exited"]

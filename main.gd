@@ -8,6 +8,8 @@ extends Node2D
 @onready var lower_portal = $"Lower Plattform/Portal"
 @onready var start_door = $"Start Door"
 
+@onready var virus = $Virus
+
 func _ready() -> void:
 	upper_portal.set_portal_pair(lower_portal)
 	lower_portal.set_portal_pair(upper_portal)
@@ -17,5 +19,7 @@ func _ready() -> void:
 	# Instance Grodan
 	var grodan = grodan_scene.instantiate()
 	add_child(grodan)
+	
+	virus.set_target(grodan)
 	
 	start_door.Exit(grodan)
