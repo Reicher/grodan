@@ -77,14 +77,16 @@ size = Vector2(14, 15)
 script = ExtResource("1_ifgnm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_ycdy4")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0.5)
+position = Vector2(-1, -12.5)
 shape = SubResource("RectangleShape2D_w48qg")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
 
 [node name="PathUpdateTimer" type="Timer" parent="."]
 

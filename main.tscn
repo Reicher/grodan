@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://j0og58yyu68e" path="res://portal.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bh7dxnhcrgymo" path="res://virus.tscn" id="6_7mycd"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
-vertices = PackedVector2Array(496, 30.0078, 7, 30.9766, 7, 26, 496, 26)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_272bh"]
+vertices = PackedVector2Array(496, 30, -4, 30, -4, 29, 496, 29)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(506, 16, 506, 40, -3, 41, -3, 16)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(496, 30, 496, 29, -4, 29, -4, 30)])
+agent_radius = 0.0
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -24,8 +25,8 @@ position = Vector2(0, 30)
 [node name="Portal" parent="Upper Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Upper Plattform"]
-position = Vector2(4, -40)
-navigation_polygon = SubResource("NavigationPolygon_7mycd")
+position = Vector2(-1, -30)
+navigation_polygon = SubResource("NavigationPolygon_272bh")
 
 [node name="Lower Plattform" parent="." instance=ExtResource("2_1bvp3")]
 position = Vector2(0, 61)
@@ -34,14 +35,14 @@ collision_layer = 1
 [node name="Portal" parent="Lower Plattform" instance=ExtResource("3_lquwl")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Lower Plattform"]
-position = Vector2(4, -40)
-navigation_polygon = SubResource("NavigationPolygon_7mycd")
+position = Vector2(-1, -30)
+navigation_polygon = SubResource("NavigationPolygon_272bh")
 
 [node name="Start Door" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(428, 47)
 
 [node name="Ladder" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(218, 45)
+position = Vector2(218, 46)
 
 [node name="White Door" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(455, 46)
@@ -73,7 +74,7 @@ position = Vector2(293, 46)
 animation = &"gold_idle"
 
 [node name="Ladder2" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(160, 45)
+position = Vector2(160, 46)
 
 [node name="White Door5" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(231, 46)
@@ -82,8 +83,8 @@ animation = &"white_idle"
 [node name="Door" parent="." instance=ExtResource("2_h2yge")]
 position = Vector2(172, 15)
 
-[node name="Virus" parent="." instance=ExtResource("6_7mycd")]
-position = Vector2(273, 47)
-
 [node name="Ladder3" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(485, 45)
+position = Vector2(485, 46)
+
+[node name="Virus" parent="." instance=ExtResource("6_7mycd")]
+position = Vector2(390, 61)

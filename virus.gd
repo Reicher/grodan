@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 75
+@export var speed: float = 35
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 var target: CharacterBody2D
 	
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	update_animations(direction)
 
 func update_animations(dir: Vector2):
-	$AnimatedSprite2D.flip_h = dir.x < 0
+	$AnimatedSprite2D.flip_h = dir.x > 0
 	if velocity.length() > 5.0:
 		$AnimatedSprite2D.play("run")
 	else:
