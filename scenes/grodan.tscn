@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://c1ff7rrgcylfi"]
 
-[ext_resource type="Script" uid="uid://b8vterhjb4vom" path="res://grodan.gd" id="1_34rqa"]
+[ext_resource type="Script" uid="uid://b8vterhjb4vom" path="res://scripts/grodan.gd" id="1_34rqa"]
 [ext_resource type="Texture2D" uid="uid://ddmcmhw1psls4" path="res://sprites/grodan.png" id="2_0dqsv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkqkn"]

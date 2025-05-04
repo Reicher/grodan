@@ -1,7 +1,7 @@
 # Main
 extends Node2D
 
-@export var grodan_scene = preload("res://grodan.tscn")
+@export var grodan_scene = preload("res://scenes/grodan.tscn")
 @export var start_delay = 0
 
 @onready var upper_portal = $"Upper Plattform/Portal"

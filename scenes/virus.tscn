@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bh7dxnhcrgymo"]
 
-[ext_resource type="Script" uid="uid://cidksoc7mpxd7" path="res://virus.gd" id="1_ifgnm"]
+[ext_resource type="Script" uid="uid://cidksoc7mpxd7" path="res://scripts/virus.gd" id="1_ifgnm"]
 [ext_resource type="Texture2D" uid="uid://c18sr8evld1se" path="res://sprites/virus.png" id="2_8v58v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]

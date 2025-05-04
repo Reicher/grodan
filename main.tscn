@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cqw0lms6j3vkg"]
 
 [ext_resource type="Script" uid="uid://du6bdr401jg3f" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cslq67hrqvc60" path="res://floor.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bjex26idt6aya" path="res://Door.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://lcfiv4yum3gn" path="res://ladder.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://j0og58yyu68e" path="res://portal.tscn" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bh7dxnhcrgymo" path="res://virus.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cslq67hrqvc60" path="res://scenes/floor.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bjex26idt6aya" path="res://scenes/Door.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://lcfiv4yum3gn" path="res://scenes/ladder.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://j0og58yyu68e" path="res://scenes/portal.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bh7dxnhcrgymo" path="res://scenes/virus.tscn" id="6_7mycd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_272bh"]
 vertices = PackedVector2Array(496, 30, -4, 30, -4, 29, 496, 29)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cslq67hrqvc60"]
 
-[ext_resource type="Script" uid="uid://csrsastxqb16" path="res://floor.gd" id="1_oj3tl"]
+[ext_resource type="Script" uid="uid://csrsastxqb16" path="res://scripts/floor.gd" id="1_oj3tl"]
 
 [node name="Upper Plattform" type="StaticBody2D"]
 collision_layer = 2

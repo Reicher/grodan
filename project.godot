@@ -13,7 +13,6 @@ config_version=5
 config/name="grodan"
 run/main_scene="uid://cqw0lms6j3vkg"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [display]
 
