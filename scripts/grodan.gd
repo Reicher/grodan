@@ -8,6 +8,8 @@ var can_climb := false
 var is_climbing := false
 var is_portaling: bool = false
 
+var has_trumpet := false
+
 @onready var animated_sprite := $AnimatedSprite2D
 var controllable := false
 

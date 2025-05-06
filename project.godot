@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="grodan"
-run/main_scene="uid://cfs6ospymi8x3"
+run/main_scene="uid://cqw0lms6j3vkg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
 [display]
