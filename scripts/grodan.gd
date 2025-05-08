@@ -11,6 +11,8 @@ var is_portaling: bool = false
 var has_trumpet := false
 
 @onready var animated_sprite := $AnimatedSprite2D
+@onready var trumpet_area: Area2D = $TrumpetArea
+
 var controllable := false
 
 func _physics_process(delta: float) -> void:
@@ -88,6 +90,21 @@ func ExitDoor() -> void:
 	animated_sprite.play("exit_door")
 	await animated_sprite.animation_finished
 	controllable = true
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("trumpet"):
+		if can_blow_trumpet():
+			blow_trumpet()
+
+func can_blow_trumpet() -> bool:
+	return has_trumpet and is_on_floor()
+
+func blow_trumpet():
+	has_trumpet = false
+
+	for body in trumpet_area.get_overlapping_bodies():
+		if body.is_in_group("virus"):
+			body.die() 
 
 func _on_climb_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.is_in_group("climb_area"):

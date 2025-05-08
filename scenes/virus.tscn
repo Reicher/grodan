@@ -1,7 +1,27 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh7dxnhcrgymo"]
+[gd_scene load_steps=17 format=3 uid="uid://bh7dxnhcrgymo"]
 
 [ext_resource type="Script" uid="uid://cidksoc7mpxd7" path="res://scripts/virus.gd" id="1_ifgnm"]
 [ext_resource type="Texture2D" uid="uid://c18sr8evld1se" path="res://sprites/virus.png" id="2_8v58v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wh0f"]
+atlas = ExtResource("2_8v58v")
+region = Rect2(0, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kg14"]
+atlas = ExtResource("2_8v58v")
+region = Rect2(28, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m83q2"]
+atlas = ExtResource("2_8v58v")
+region = Rect2(56, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jilg7"]
+atlas = ExtResource("2_8v58v")
+region = Rect2(84, 50, 28, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c2qo"]
+atlas = ExtResource("2_8v58v")
+region = Rect2(112, 50, 28, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ycdy4"]
 atlas = ExtResource("2_8v58v")
@@ -33,6 +53,26 @@ region = Rect2(112, 0, 28, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycdy4"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wh0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kg14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m83q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jilg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c2qo")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ycdy4")
@@ -73,13 +113,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
 size = Vector2(14, 15)
 
-[node name="Virus" type="CharacterBody2D"]
+[node name="Virus" type="CharacterBody2D" groups=["virus"]]
 script = ExtResource("1_ifgnm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ycdy4")
-animation = &"run"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -12.5)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1ff7rrgcylfi"]
+[gd_scene load_steps=31 format=3 uid="uid://c1ff7rrgcylfi"]
 
 [ext_resource type="Script" uid="uid://b8vterhjb4vom" path="res://scripts/grodan.gd" id="1_34rqa"]
 [ext_resource type="Texture2D" uid="uid://ddmcmhw1psls4" path="res://sprites/grodan.png" id="2_0dqsv"]
@@ -210,6 +210,9 @@ size = Vector2(13, 17.7812)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dqsv"]
 size = Vector2(4, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it2yn"]
+size = Vector2(80, 22)
+
 [node name="Grodan" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_34rqa")
@@ -235,6 +238,12 @@ limit_bottom = 65
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0dqsv")
+
+[node name="TrumpetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrumpetArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_it2yn")
 
 [connection signal="area_shape_entered" from="ClimbArea" to="." method="_on_climb_area_area_shape_entered"]
 [connection signal="area_shape_exited" from="ClimbArea" to="." method="_on_climb_area_area_shape_exited"]
