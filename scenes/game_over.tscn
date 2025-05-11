@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddl5qi0mpfthe"]
+
+[ext_resource type="PackedScene" uid="uid://ctubk7n502jbm" path="res://scenes/info_screen.tscn" id="1_xeevv"]
+[ext_resource type="Texture2D" uid="uid://c8ieste0b0bho" path="res://sprites/gameOver.png" id="2_wqhvx"]
+
+[node name="InfoScreen" instance=ExtResource("1_xeevv")]
+next_scene = "res://scenes/title.tscn"
+
+[node name="TextureRect" parent="." index="1"]
+texture = ExtResource("2_wqhvx")
