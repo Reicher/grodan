@@ -32,11 +32,15 @@ func _physics_process(delta: float) -> void:
 
 
 func game_over() -> void:
-	var info_screen_scene = preload("res://scenes/info_screen.tscn")
-	var info_screen = info_screen_scene.instantiate()
-	info_screen.screen_type = info_screen.ScreenType.GAME_OVER
-	get_tree().change_scene_to_packed(info_screen)
+	var game_over_scene = preload("res://scenes/game_over.tscn")
+	var game_over_screen = game_over_scene.instantiate()
+	
+	# Remove current scene
+	get_tree().current_scene.queue_free()
 
+	# Add the new screen directly to the root viewport
+	get_tree().root.add_child(game_over_screen)
+	
 
 func update_animations(dir: Vector2):
 	$AnimatedSprite2D.flip_h = dir.x > 0

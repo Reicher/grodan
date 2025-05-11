@@ -91,7 +91,7 @@ func ExitDoor() -> void:
 	animated_sprite.play("exit_door")
 	await animated_sprite.animation_finished
 	controllable = true
-	
+
 func _unhandled_input(event):
 	if event.is_action_pressed("trumpet"):
 		if can_blow_trumpet():
