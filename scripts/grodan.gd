@@ -9,6 +9,7 @@ var is_climbing := false
 var is_portaling: bool = false
 
 var has_trumpet := false
+var blows_trumpet := false
 
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var trumpet_area: Area2D = $TrumpetArea
@@ -77,11 +78,11 @@ func update_animation() -> void:
 	elif not is_on_floor():
 		animated_sprite.play("jump")
 	else:
-		animated_sprite.play(
-			"idle" if velocity.x == 0 else
-			"run" if abs(velocity.x) > walk_speed else
-			"walk"
-		)
+		var base := ("idle" if velocity.x == 0 else
+					 "run" if abs(velocity.x) > walk_speed else
+					 "walk")
+		var extra := ("_hold_trumpet" if has_trumpet else "_blow_trumpet" if blows_trumpet else "")
+		animated_sprite.play(base + extra)
 	
 	if velocity.x != 0:
 		animated_sprite.flip_h = velocity.x > 0
@@ -101,10 +102,15 @@ func can_blow_trumpet() -> bool:
 
 func blow_trumpet():
 	has_trumpet = false
-
-	for body in trumpet_area.get_overlapping_bodies():
+	blows_trumpet = true
+	$TrumpetBlowTimer.start()
+	
+	for body in trumpet_area.get_overlapping_bodies():	
 		if body.is_in_group("virus"):
-			body.die() 
+			body.die()
+			
+func _on_trumpet_blow_timer_timeout() -> void:
+	blows_trumpet = false
 
 func _on_climb_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.is_in_group("climb_area"):
